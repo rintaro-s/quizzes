@@ -39,7 +39,6 @@
   </script>
   
   <style>
-  /* スタイルを追加して、UIをアニメーションさせたり、色合いを設定したりできます。 */
   header {
     background-color: #4CAF50;
     color: white;
