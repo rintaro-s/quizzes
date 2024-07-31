@@ -40,7 +40,7 @@
   </script>
   
   <style scoped>
-  /* スタイルを追加して、UIを整えます。 */
+ 
   input {
     margin: 5px;
   }
