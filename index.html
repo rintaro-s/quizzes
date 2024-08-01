@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>単語学習サイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>単語と意味の一問一答</h1>
+        <div class="card">
+            <input v-model="word" placeholder="単語">
+            <input v-model="meaning" placeholder="意味">
+            <button @click="addWord">追加</button>
+        </div>
+        <button @click="startQuiz" v-if="!quizStarted">学習開始</button>
+        <div v-if="quizStarted">
+            <h2>{{ currentWord.meaning }}</h2>
+            <input v-model="userAnswer" @keyup.enter="checkAnswer">
+        </div>
+        <div v-if="quizEnded">
+            <p>終了しました！正解率: {{ correctAnswers / totalQuestions * 100 }}%</p>
+            <button @click="reloadPage">リロード</button>
+        </div>
+        <div v-if="words.length > 0 && !quizStarted">
+            <h3>追加した問題一覧</h3>
+            <ul>
+                <li v-for="(word, index) in words" :key="index">{{ word.word }} - {{ word.meaning }}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
